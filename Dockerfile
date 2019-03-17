@@ -50,9 +50,13 @@ COPY configuration.txt /home/renderer/osmosis_workdir/configuration.txt
 COPY update.sh /home/renderer/update.sh
 RUN chown renderer /home/renderer/update.sh
 RUN chmod u+x /home/renderer/update.sh
+
 WORKDIR /home/renderer/src
 RUN git clone https://github.com/zverik/regional
 RUN chmod u+x /home/renderer/src/regional/trim_osc.py
+WORKDIR /home/renderer/src
+RUN git clone https://github.com/Zverik/Nik4.git
+RUN chmod u+x /home/renderer/src/Nik4
 
 # Start running
 USER root
