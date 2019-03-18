@@ -36,7 +36,7 @@ USER root
 RUN apt-get -y install sudo fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont npm nodejs autoconf \
 apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev \
 mapnik-utils python-mapnik gradle python-psycopg2 python-shapely python-lxml osmosis \
-postgresql postgresql-contrib postgis postgresql-10-postgis-2.4
+postgresql postgresql-contrib postgis postgresql-10-postgis-2.4 php-cli php-gd php-curl
 
 USER renderer
 RUN python -c 'import mapnik'
@@ -67,6 +67,8 @@ WORKDIR /home/renderer/src
 RUN git clone https://github.com/Zverik/Nik4.git
 RUN chmod u+x /home/renderer/src/Nik4
 
+COPY worker.php /home/renderer/worker.php
+COPY phpMQTT.php /home/renderer/phpMQTT.php
 
 ENV OSMFILE http://download.geofabrik.de/europe/germany/niedersachsen-latest.osm.pbf
 ENV MQTT_SERVER 172.18.5.3:1833
