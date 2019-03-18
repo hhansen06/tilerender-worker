@@ -36,7 +36,8 @@ USER root
 RUN apt-get -y install sudo fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont npm nodejs autoconf \
 apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev \
 mapnik-utils python-mapnik gradle python-psycopg2 python-shapely python-lxml osmosis \
-postgresql postgresql-contrib postgis postgresql-10-postgis-2.4 \
+postgresql postgresql-contrib postgis postgresql-10-postgis-2.4
+
 USER renderer
 RUN python -c 'import mapnik'
 
