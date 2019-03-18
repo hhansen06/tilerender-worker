@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV OSMFILE
+ENV OSMFILE http://download.geofabrik.de/europe/germany/niedersachsen-latest.osm.pbf
 
 # Based on
 # https://switch2osm.org/manually-building-a-tile-server-18-04-lts/
