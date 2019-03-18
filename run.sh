@@ -1,6 +1,4 @@
 #!/bin/bash
-echo $OSMFILE
-printenv
 
 if [ ! -f /root/firststart ]; then
 
@@ -16,8 +14,8 @@ if [ ! -f /root/firststart ]; then
 
     # Download Luxembourg as sample if no data is provided
     if [ ! -f /data.osm.pbf ]; then
-        echo "WARNING: No import file at /data.osm.pbf, so importing Luxembourg as example..."
-        wget -nv http://download.geofabrik.de/europe/germany/niedersachsen-latest.osm.pbf -O /data.osm.pbf
+        echo "WARNING: No import file found, Downloading $OSMFILE"
+        wget -nv $OSMFILE -O /data.osm.pbf
     fi
 
     # Import data
