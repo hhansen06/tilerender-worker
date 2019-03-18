@@ -32,7 +32,7 @@ fi
 
     # Run
     echo "Ready to serve ..."
-    sudo -u renderer "php /home/renderer/worker.php" &
+    sudo -u renderer "php /home/renderer/worker.php $MQTT_SERVER 1883 $MQTT_CHANNEL" &
     
     
     while true; do
