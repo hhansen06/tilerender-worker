@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo $OSMFILE
+printenv
 
 if [ ! -f /root/firststart ]; then
 
