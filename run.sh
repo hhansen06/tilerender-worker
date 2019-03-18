@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $OSMFILE
+
 if [ ! -f /root/firststart ]; then
 
     /home/renderer/src/openstreetmap-carto/scripts/get-shapefiles.py
