@@ -71,8 +71,8 @@ COPY worker.php /home/renderer/worker.php
 COPY phpMQTT.php /home/renderer/phpMQTT.php
 
 ENV OSMFILE http://download.geofabrik.de/europe/germany/niedersachsen-latest.osm.pbf
-ENV MQTT_SERVER 172.18.5.3:1833
-ENV MQTT_CHANNEL /test
+ENV MQTT_SERVER 172.18.5.3
+ENV MQTT_CHANNEL /osm/maprequest
 ENV MQTT_USER node
 ENV MQTT_PASSWD node
 
