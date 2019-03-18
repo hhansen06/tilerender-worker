@@ -32,7 +32,7 @@ fi
 
     # Run
     echo "Ready to serve ..."
-    sudo -u renderer renderd -c /usr/local/etc/renderd.conf
+    sudo -u renderer "php /home/renderer/worker.php" &
     
     
     while true; do
