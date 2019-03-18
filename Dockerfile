@@ -69,7 +69,9 @@ RUN chmod u+x /home/renderer/src/Nik4
 
 ENV OSMFILE http://download.geofabrik.de/europe/germany/niedersachsen-latest.osm.pbf
 ENV MQTT_SERVER 172.18.5.3:1833
-ENV MQTT_CHANNEL 
+ENV MQTT_CHANNEL /test
+ENV MQTT_USER node
+ENV MQTT_PASSWD node
 
 # Start running
 USER root
