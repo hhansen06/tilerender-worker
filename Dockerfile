@@ -60,6 +60,8 @@ RUN chmod u+x /home/renderer/src/Nik4
 
 # Start running
 USER root
+RUN chmod u+x /run.sh
+
 COPY run.sh /
 ENTRYPOINT ["/run.sh"]
 CMD []
