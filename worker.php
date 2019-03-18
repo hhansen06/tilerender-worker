@@ -22,7 +22,7 @@ function procmsg($topic, $msg){
         $data = json_decode($msg);
         print_r($data);
         $id = time();
-        exec("su renderer -c \"python /home/renderer/src/Nik4/nik4.py -c ".$data->req->x." ".$data->req->y." -z 17 --size-px 400 400 /home/renderer/src/openstreetmap-carto/mapnik.xml /tmp/".$id.
+        exec("python /home/renderer/src/Nik4/nik4.py -c ".$data->req->x." ".$data->req->y." -z 17 --size-px 400 400 /home/renderer/src/openstreetmap-carto/mapnik.xml /tmp/".$id.".png");
 
         if($data->req->cross == "true")
         {
