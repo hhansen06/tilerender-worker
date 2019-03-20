@@ -54,6 +54,15 @@ USER renderer
 RUN carto -v
 RUN carto project.mml > mapnik.xml
 
+# Install PostgreSQL
+USER root
+RUN apt-get install -y postgresql postgresql-contrib postgis postgresql-10-postgis-2.4
+USER renderer
+
+# Install fonts
+USER root
+RUN apt-get install -y fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
+USER renderer
 
 WORKDIR /home/renderer/src
 RUN git clone https://github.com/Zverik/Nik4.git
