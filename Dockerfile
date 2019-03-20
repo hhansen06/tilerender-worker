@@ -48,6 +48,7 @@ WORKDIR /home/renderer/src
 RUN git clone https://github.com/gravitystorm/openstreetmap-carto.git
 WORKDIR /home/renderer/src/openstreetmap-carto
 USER root
+RUN apt-get install -y npm nodejs
 RUN npm install -g carto
 USER renderer
 RUN carto -v
