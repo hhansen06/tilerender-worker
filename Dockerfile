@@ -64,6 +64,13 @@ USER root
 RUN apt-get install -y fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
 USER renderer
 
+# Install sudo
+USER root
+RUN apt-get install -y sudo
+USER renderer
+
+
+
 WORKDIR /home/renderer/src
 RUN git clone https://github.com/Zverik/Nik4.git
 RUN chmod u+x /home/renderer/src/Nik4
