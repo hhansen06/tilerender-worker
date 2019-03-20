@@ -54,16 +54,6 @@ USER renderer
 RUN carto -v
 RUN carto project.mml > mapnik.xml
 
-# Configure stylesheet
-WORKDIR /home/renderer/src
-RUN git clone https://github.com/gravitystorm/openstreetmap-carto-de.git
-WORKDIR /home/renderer/src/openstreetmap-carto
-USER root
-RUN npm install -g carto
-USER renderer
-RUN carto -v
-RUN carto project.mml > mapnik.xml
-
 
 WORKDIR /home/renderer/src
 RUN git clone https://github.com/Zverik/Nik4.git
