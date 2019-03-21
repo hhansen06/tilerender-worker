@@ -45,6 +45,7 @@ COPY phpMQTT.php /home/renderer/phpMQTT.php
 
 # Configure stylesheet
 WORKDIR /home/renderer/src
+RUN git clone https://github.com/hhansen06/tilerender-images.git
 RUN git clone https://github.com/gravitystorm/openstreetmap-carto.git
 WORKDIR /home/renderer/src/openstreetmap-carto
 USER root
