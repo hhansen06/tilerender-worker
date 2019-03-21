@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ ! -f /root/firststart ]; then
-    /home/renderer/src/openstreetmap-carto/scripts/get-shapefiles.py
     php /home/renderer/updatemapnik.php /home/renderer/src/openstreetmap-carto/mapnik.xml
+    /home/renderer/src/openstreetmap-carto/scripts/get-shapefiles.py
     service postgresql start
     sudo -u postgres createuser renderer
     sudo -u postgres createdb -E UTF8 -O renderer gis
