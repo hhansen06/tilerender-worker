@@ -39,27 +39,9 @@ function procmsg($topic, $msg){
         $cmd = "python /home/renderer/src/Nik4/nik4.py ".$geojson." -s ".$data->req->scale
         ." -v --padding ".$data->req->margin." -p ".$data->req->ppi." --size-px ".$data->req->width." ".$data->req->height." ".$mapnikurl." /tmp/".$id.".png";
 
-
         echo $cmd;
         exec($cmd);
-        if($data->req->cross == "true")
-        {
-
-               $width = $data->req->width;
-               $height = $data->req->height;
-
-                $im2 = @imagecreatefrompng("/tmp/".$id.".png");
-                $im = imagecreatetruecolor($width, $height) or die("Cannot Initialize new GD image stream");
-                imagecopyresampled($im,$im2,0,0,0,0, $width,$height,$width,$height);
-
-                $red = imagecolorallocate($im, 255, 0, 0);      // red
-                $posw = ($width/2)-5;
-                $posh = ($height/2)-5;
-                imageline($im, $posw,$posh,$posw+10,$posh,$red);
-                imageline($im, $posw+5,$posh-5,$posw+5,$posh+5,$red);
-                imagepng($im,"/tmp/".$id.".png");
-                imagedestroy($im);
-        }
+        
         if(file_exists("/tmp/".$id.".png"))
         {
           $url = $data->req->uploadurl.$id;
