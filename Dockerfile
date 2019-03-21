@@ -42,11 +42,13 @@ USER renderer
 COPY worker.php /home/renderer/worker.php
 COPY phpMQTT.php /home/renderer/phpMQTT.php
 
+USER root
 # install updater 
 COPY update.sh /home/renderer/update.sh
 RUN chmod +x /home/renderer/update.sh
 
 # Configure stylesheet
+USER renderer
 WORKDIR /home/renderer/src
 RUN git clone https://github.com/hhansen06/tilerender-images.git
 RUN git clone https://github.com/gravitystorm/openstreetmap-carto.git
