@@ -44,6 +44,7 @@ COPY phpMQTT.php /home/renderer/phpMQTT.php
 
 USER root
 # install updater 
+copy updatemapnik.php /home/renderer/updatemapnik.php
 COPY update.sh /home/renderer/update.sh
 RUN chmod +x /home/renderer/update.sh
 
