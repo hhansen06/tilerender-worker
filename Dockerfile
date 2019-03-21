@@ -37,13 +37,14 @@ RUN python -c 'import mapnik'
 
 # install MQTT Worker
 USER root
-RUN apt-get -y install php-cli php-gd php-curl
+RUN apt-get -y install php-cli php-gd php-curl php-xml
 USER renderer
 COPY worker.php /home/renderer/worker.php
 COPY phpMQTT.php /home/renderer/phpMQTT.php
 
 # install updater 
-COPY update.php /home/renderer/update.php
+COPY update.sh /home/renderer/update.sh
+RUN chmod u+x /home/renderer/update.sh
 
 # Configure stylesheet
 WORKDIR /home/renderer/src
