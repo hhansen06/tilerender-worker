@@ -42,6 +42,8 @@ USER renderer
 COPY worker.php /home/renderer/worker.php
 COPY phpMQTT.php /home/renderer/phpMQTT.php
 
+# install updater 
+COPY update.php /home/renderer/update.php
 
 # Configure stylesheet
 WORKDIR /home/renderer/src
