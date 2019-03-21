@@ -44,7 +44,7 @@ COPY phpMQTT.php /home/renderer/phpMQTT.php
 
 # install updater 
 COPY update.sh /home/renderer/update.sh
-RUN chmod u+x /home/renderer/update.sh
+RUN chmod +x /home/renderer/update.sh
 
 # Configure stylesheet
 WORKDIR /home/renderer/src
