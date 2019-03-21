@@ -26,8 +26,18 @@ function procmsg($topic, $msg){
 
         $mapnikurl = "/home/renderer/src/".$data->req->style."/mapnik.xml";
 
-        $cmd = "python /home/renderer/src/Nik4/nik4.py -s ".$data->req->scale." -c ".$data->req->x." ".$data->req->y." -z ".$data->req->zoom
-        ." -p ".$data->req->ppi." --size-px ".$data->req->width." ".$data->req->height." ".$mapnikurl." /tmp/".$id.".png";
+        if(isset($data->req->geojson))
+        {
+          file_put_contents("/tmp/".$id.".geojson",$data->req->geojson);
+          $geojson = " --fit route --add-layers route --vars route=/tmp/".$id.".geojson ";
+        }
+        else
+        $geojson = "-c ".$data->req->x." ".$data->req->y." -z ".$data->req->zoom;
+
+
+
+        $cmd = "python /home/renderer/src/Nik4/nik4.py ".$geojson." -s ".$data->req->scale
+        ." -v --padding ".$data->req->margin." -p ".$data->req->ppi." --size-px ".$data->req->width." ".$data->req->height." ".$mapnikurl." /tmp/".$id.".png";
 
 
         echo $cmd;
@@ -74,3 +84,4 @@ function procmsg($topic, $msg){
 }
 
 ?>
+                
