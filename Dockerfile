@@ -78,8 +78,8 @@ USER renderer
 
 # Install osmosis updater 
 USER root
-RUN apt-get install -y osmosis python-psycopg2 python-lxml python-shapely
-
+RUN apt-get install -y osmosis
+RUN apt-get install -y python-psycopg2 python-lxml python-shapely
 WORKDIR /home/renderer/src
 RUN git clone https://github.com/zverik/regional
 RUN chmod u+x /home/renderer/src/regional/trim_osc.py
