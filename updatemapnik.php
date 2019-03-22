@@ -9,7 +9,7 @@ $xml = simplexml_load_file($argv[1]);
 
 
 $s1 = $xml->addChild("Style");
-$s1->AddAttribute("name","geos");
+$s1->AddAttribute("name","geoms");
 $s1r1 = $s1->addchild("Rule");
 
 $s1r1->addchild("Filter","[mapnik::geometry_type]=polygon or [fill]");
