@@ -32,6 +32,6 @@ fi
     
     while true; do
         su renderer -c "/home/renderer/update.sh"
-        sleep 1m
+        sleep 1h
     done
     exit 0
