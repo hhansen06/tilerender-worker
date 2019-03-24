@@ -26,22 +26,26 @@ function procmsg($topic, $msg){
 
         $mapnikurl = "/home/renderer/src/".$data->req->style."/mapnik.xml";
 
+        if(isset($data->req->y) AND isset($data->req->x))
+          $center = " -c ".$data->req->x." ".$data->req->y." -z ".$data->req->zoom." ";
+        else
+          $center = " --fit route ";
+
+
         if(isset($data->req->geojson))
         {
           file_put_contents("/tmp/".$id.".geojson",$data->req->geojson);
-          $geojson = " --fit route --add-layers route --vars route=/tmp/".$id.".geojson ";
+          $geojson = " --add-layers route --vars route=/tmp/".$id.".geojson ".$center;
         }
         else
-        $geojson = "-c ".$data->req->x." ".$data->req->y." -z ".$data->req->zoom;
-
-
-
-        $cmd = "python /home/renderer/src/Nik4/nik4.py ".$geojson." -s ".$data->req->scale
+        $geojson = $center;
+        
+                $cmd = "python /home/renderer/src/Nik4/nik4.py ".$geojson." -s ".$data->req->scale
         ." -v --padding ".$data->req->margin." -p ".$data->req->ppi." --size-px ".$data->req->width." ".$data->req->height." ".$mapnikurl." /tmp/".$id.".png";
 
         echo $cmd;
         exec($cmd);
-        
+
         if(file_exists("/tmp/".$id.".png"))
         {
           $url = $data->req->uploadurl.$id;
@@ -66,4 +70,4 @@ function procmsg($topic, $msg){
 }
 
 ?>
-                
+
