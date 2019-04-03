@@ -48,6 +48,15 @@ function procmsg($topic, $msg){
 
         if(file_exists("/tmp/".$id.".png"))
         {
+        $img = imagecreatefrompng("/tmp/".$id.".png");
+        $white = imagecolorallocate($img, 0, 0, 0);
+        $txt = chr(169)." OpenStreetMap contributors | rendered by h2com.eu";
+        $font = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf";
+        imagettftext($img, 8, 0, 5, ($data->req->height-5), $white, $font, $txt);
+        imagepng($img,"/tmp/".$id.".png",0);
+        imagedestroy($img);
+
+                
           $url = $data->req->uploadurl.$id;
           $ch = curl_init();
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
